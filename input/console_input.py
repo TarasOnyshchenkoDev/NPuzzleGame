@@ -9,5 +9,7 @@ class ConsoleInput(UserInput):
 				if tile in range(1, size):
 					return tile
 				print(f"Invalid number. Please enter a number between 1 and {size - 1}.")
+			except TypeError:
+				print("Invalid input. Please enter a number.")
 			except ValueError:
 				print("Invalid input. Please enter a number.")

@@ -10,7 +10,8 @@ class Board:
 		self.init_board()
 
 	def init_board(self):
-		self.board = list(range(self.size))
+		for i in range(self.size):
+			self.board.append(i)
 		random.shuffle(self.board)
 		if not self.is_solvable():
 			# If not solvable, swap two adjacent non-empty tiles to make it solvable

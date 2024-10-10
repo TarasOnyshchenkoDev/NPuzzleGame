@@ -1,4 +1,5 @@
 import unittest
+from io import StringIO
 from unittest.mock import patch
 from input.console_input import ConsoleInput
 
@@ -11,6 +12,8 @@ class ConsoleInputTest(unittest.TestCase):
         tile= console_input.get_tile_input(9)
         self.assertEqual(tile, 4)
 
+
+    @patch('sys.stdout', new=StringIO())
     @patch('builtins.input')
     def test_get_tile_input_invalid(self, mock_input):
         mock_input.side_effect = ['a','12','3']

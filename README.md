@@ -22,9 +22,6 @@ https://github.com/TarasOnyshchenkoDev/NPuzzleGame.git
 
 # Navigate to the project directory
 cd NPuzzleGame
-
-# Install dependencies
-npm install
 ```
 ## Usage
 ```bash

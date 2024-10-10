@@ -10,10 +10,23 @@ class BoardTest(unittest.TestCase):
 		self.dimension=3
 		self.board = Board(self.dimension)
 
+	@patch('random.shuffle')
+	def test_init_board_creates_solvable_board_non_solvable(self,mock_shuffle):
+		mock_shuffle.side_effect = lambda x: x.clear() or x.extend([1, 2, 3, 4, 5, 6, 8, 7, 0]) #non solvable
+		self.board = Board(self.dimension)
+		self.assertTrue(self.board.is_solvable())
 
-	def test_init_board_creates_solvable_board(self):
-		board = Board(self.dimension)
-		self.assertTrue(board.is_solvable())
+	@patch('random.shuffle')
+	def test_init_board_creates_solvable_board_isSolvable(self, mock_shuffle):
+		mock_shuffle.side_effect = lambda x: x.clear() or x.extend([1, 2, 3, 4, 5, 6, 7, 8, 0])  # is solvable
+		self.board = Board(self.dimension)
+		self.assertTrue(self.board.is_solvable())
+
+	@patch('random.shuffle')
+	def test_init_board_creates_solvable_board_non_solvable_first_row_empty(self, mock_shuffle):
+		mock_shuffle.side_effect = lambda x: x.clear() or x.extend([7,0,4,3,1,2,8,5,6])  # non solvable
+		self.board = Board(self.dimension)
+		self.assertTrue(self.board.is_solvable())
 
 	def test_board_is_solvable_true(self):
 		self.board.board=[1,2,3,4,5,6,7,8,0]

@@ -1,5 +1,4 @@
 import unittest
-from os.path import pathsep
 from unittest.mock import patch
 
 import board

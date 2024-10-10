@@ -1,11 +1,14 @@
 import random
+from collections import deque
 
 
 class Board:
 	def __init__(self, dimension: int):
 		self.board = []
 		self.empty_tile = None
-		self.dimension = dimension
+		if dimension <2:
+			dimension = 2
+		self.dimension = dimension # should be at least 2 by 2
 		self.size = dimension ** 2
 		self.init_board()
 
@@ -39,7 +42,6 @@ class Board:
 			empty_row = self.dimension - self.board.index(0) // self.dimension - 1
 			if empty_row % 2 == 0:
 				inversions += 1
-
 		return inversions % 2 == 0
 
 	# Moving tile to empty space
